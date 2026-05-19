@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODERNISASI AHMAD V2</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; --bg: #f4f7f6; }
+        body { font-family: sans-serif; margin: 0; background: var(--bg); overflow-x: hidden; }
+        
+        /* Sidebar */
+        #sidebar { height: 100%; width: 250px; position: fixed; z-index: 2; top: 0; left: -250px; background: var(--primary); transition: 0.3s; padding-top: 60px; }
+        #sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: white; display: block; }
+        #sidebar a:hover { background: var(--accent); }
+
+        /* Main */
+        #main { transition: 0.3s; padding: 20px; }
+        .header { display: flex; align-items: center; background: white; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .menu-btn { font-size: 24px; cursor: pointer; border: none; background: none; }
+
+        /* Fitur */
+        .section { display: none; }
+        .active { display: block; }
+        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        img { width: 100%; border-radius: 5px; }
+        .del-btn { background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; float: right; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <a href="#" onclick="show('home')">Halaman Utama</a>
+    <a href="#" onclick="show('musik')">Musik Player</a>
+    <a href="#" onclick="show('galeri')">Galeri & Status</a>
+</div>
+
+<div id="main">
+    <div class="header">
+        <button class="menu-btn" onclick="toggle()">☰</button>
+        <h2 id="title" style="margin-left:15px">Halaman Utama</h2>
+    </div>
+
+    <div id="home" class="section active">
+        <div class="card">
+            <h3>Selamat Datang, Ahmad</h3>
+            <p>Ini adalah pusat kendali modernisasi kampungmu.</p>
+        </div>
+    </div>
+
+    <div id="musik" class="section">
+        <div class="card">
+            <h3>Pemutar Musik</h3>
+            <p>Folder 'm' akan diputar di sini.</p>
+        </div>
+    </div>
+
+    <div id="galeri" class="section">
+        <div class="card">
+            <h4>Update Status</h4>
+            <textarea id="txt" style="width:100%" placeholder="Tulis sesuatu..."></textarea>
+            <input type="file" id="img" accept="image/*" style="margin:10px 0">
+            <button onclick="post()" style="width:100%; padding:10px; background:var(--accent); color:white; border:none; border-radius:5px">POSTING</button>
+        </div>
+        <div id="feed"></div>
+    </div>
+</div>
+
+<script>
+    let open = false;
+    function toggle() {
+        document.getElementById("sidebar").style.left = open ? "-250px" : "0";
+        open = !open;
+    }
+
+    function show(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.getElementById('title').innerText = id.toUpperCase();
+        if(window.innerWidth < 600) toggle();
+    }
+
+    function post() {
+        const text = document.getElementById('txt').value;
+        const file = document.getElementById('img').files[0];
+        const feed = document.getElementById('feed');
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const div = document.createElement('div');
+            div.className = 'card';
+            div.innerHTML = `<button class="del-btn" onclick="del(this)">Hapus</button>
+                             ${file ? `<img src="${e.target.result}">` : ''}
+                             <p>${text}</p>`;
+            feed.prepend(div);
+            document.getElementById('txt').value = '';
+        }
+        if(file) reader.readAsDataURL(file); else reader.onload({target:{result:''}});
+    }
+
+    function del(btn) {
+        if(prompt("Kunci Admin:") === "ahmad123") btn.parentElement.remove();
+        else alert("Salah!");
+    }
+</script>
+</body>
+</html>
