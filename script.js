@@ -13,5 +13,3 @@ function show(id) {
     if(window.innerWidth < 768 && open) toggle(); // Tutup sidebar otomatis di HP setelah pilih menu
 }
 
-// Fitur POST dan DEL sama seperti sebelumnya
-

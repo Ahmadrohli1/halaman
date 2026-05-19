@@ -3,13 +3,13 @@
     --accent: #16213e; 
     --highlight: #0f3460;
     --neon: #e94560; /* Merah Neon */
-    --bg: #f0f2f5;
+    --bg: #f4f6f8;
     --text: #ffffff;
 }
 
 body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); overflow-x: hidden; }
 
-/* Sidebar Presisi Sesuai Gambar */
+/* Sidebar Presisi */
 #sidebar { 
     height: 100%; width: 260px; position: fixed; z-index: 1000; top: 0; left: -260px; 
     background: var(--primary); transition: 0.4s; padding-top: 20px;
@@ -19,7 +19,7 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); ov
 #sidebar a { padding: 15px 25px; text-decoration: none; font-size: 16px; color: #adb5bd; display: block; transition: 0.3s; }
 #sidebar a:hover { color: white; background: var(--highlight); padding-left: 35px; }
 
-/* Main Content Area */
+/* Main Area & Header */
 #main { transition: 0.4s; }
 .header { 
     display: flex; align-items: center; background: white; padding: 15px; 
@@ -32,27 +32,42 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); ov
 .active { display: block; animation: fadeIn 0.5s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Hero Card Modern Sesuai Gambar */
+/* Hero Card Sesuai Gambar */
 .hero-card {
     background: linear-gradient(135deg, var(--primary), var(--highlight));
-    color: white; padding: 30px 20px; border-radius: 15px; text-align: center; margin-bottom: 20px;
+    color: white; padding: 40px 20px; border-radius: 15px; text-align: center; margin-bottom: 20px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
-.hero-card h1 { margin: 0; font-size: 1.6rem; }
-.hero-card p { opacity: 0.8; font-size: 0.9rem; margin-top: 5px; }
+.hero-card h1 { margin: 0; font-size: 1.8rem; }
+.hero-card p { opacity: 0.8; font-size: 0.9rem; margin-top: 10px; }
 
-/* Grid Cards Sesuai Gambar */
+/* Grid Cards (Musik & Galeri) Sesuai Gambar */
 .grid-container {
     display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;
 }
 .info-card {
-    background: white; padding: 15px; border-radius: 12px; text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-bottom: 3px solid var(--neon);
+    color: white; padding: 20px; border-radius: 12px; text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s;
+    background-size: cover; background-position: center; border-bottom: 3px solid var(--neon);
 }
-.info-card h3 { margin: 0; font-size: 0.9rem; color: var(--primary); }
-.info-card p { font-size: 0.7rem; color: #666; margin-top: 5px; }
+.musik-card {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('gitar.jpg');
+}
+.galeri-card {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('gunung.jpg');
+}
+.info-card h3 { margin: 0; font-size: 1rem; color: white; }
+.info-card p { font-size: 0.75rem; color: #eee; margin-top: 5px; }
 
-/* Kartu Status FB Style Sesuai Gambar */
+/* Visi Misi Gradasi Sesuai Gambar */
+.vision-card {
+    background: linear-gradient(135deg, #1f4068, #16213e); color: white;
+    padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px;
+}
+.vision-card h3 { color: white; margin-top: 0; }
+.vision-card p { color: #eee; font-size: 0.9rem; line-height: 1.5; }
+
+/* Tampilan Dasar Kartu Lainnya */
 .card { 
     background: white; padding: 20px; border-radius: 12px; 
     box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 20px; 
@@ -63,5 +78,4 @@ textarea { width: 100%; border: 1px solid #ddd; border-radius: 8px; padding: 10p
     width: 100%; padding: 12px; background: var(--neon); color: white; 
     border: none; border-radius: 8px; font-weight: bold; margin-top: 10px; cursor: pointer;
 }
-.del-btn { background: #ff4757; color: white; border: none; padding: 5px 10px; border-radius: 5px; float: right; cursor: pointer; }
-hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
+hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0; }
