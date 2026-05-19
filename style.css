@@ -27,3 +27,38 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); ov
 img { width: 100%; border-radius: 10px; margin-top: 10px; }
 .post-btn { width: 100%; padding: 12px; background: var(--neon); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
 .del-btn { background: #ff4757; color: white; border: none; padding: 5px 10px; border-radius: 5px; float: right; }
+
+/* Gaya Khusus Halaman Utama */
+.hero-card {
+    background: linear-gradient(135deg, var(--primary), var(--highlight));
+    color: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.hero-card h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; }
+.hero-card p { opacity: 0.8; font-size: 0.9rem; margin-top: 10px; }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-bottom: 3px solid var(--neon);
+}
+
+.info-card h3 { margin: 0; font-size: 1rem; color: var(--primary); }
+.info-card p { font-size: 0.75rem; color: #666; margin-top: 5px; }
+
+hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
